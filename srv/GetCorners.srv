@@ -1,0 +1,8 @@
+sensor_msgs/Image image             # image data
+int32 dictionary                    # optional, default DICT_ARUCO_ORIGINAL
+---
+int32[] ids
+geometry_msgs/Point[] upper_left
+geometry_msgs/Point[] upper_right
+geometry_msgs/Point[] lower_right
+geometry_msgs/Point[] lower_left
