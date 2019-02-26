@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 import rospy
@@ -35,17 +35,17 @@ def handleGetCorners(req):
         dictionary = aruco.DICT_ARUCO_ORIGINAL
 
     print("handle", req.image.height, req.image.width)
-    image = bridge.imgmsg_to_cv2(req.image)
+    image = bridge.imgmsg_to_cv2(req.image, "passthrough")
     corners, ids = findArucoMarkers(image, dictionary, False)
 
     if corners is None or ids is None:
         print("Did not find any markers.")
         return response
 
-    for i in xrange(0, len(ids)):
+    for i in range(len(ids)):
         response.ids.append(ids[i][0])
 
-    for i in xrange(0, len(corners)):
+    for i in range(len(corners)):
         points = corners[i][0]
         p = Point(points[0][0], points[0][1], 0)
         response.upper_left.append(p)
